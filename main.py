@@ -10,6 +10,8 @@ class Puzzle():
         self.room_states = {"Room One" :False,
                             "Room Two" : False,
                             "Room Three": False}
+        self.start_time = 0
+        self.end_time = 0
     def welcome_player(self):
         print("Welcome player before we begin what would you like your username to be? \nPlease enter it below.")
         self.user_name = str(input())
@@ -28,6 +30,7 @@ class Puzzle():
         make_linebreak()
         print("Loading...")
         time.sleep(3)
+        self.start_time = time.perf_counter()
         self.present_lock_one()
     def present_lock_one(self):
         make_blankspace()
@@ -45,11 +48,10 @@ class Puzzle():
             elif x == 2:
                 make_linebreak()
                 print("What is your answer?")
-                make_linebreak()
                 try:
                     x = int(input("     "))
                 except:
-                    print("you stupid dumb butt make it a whole number not a word")
+                    print("Your answer should be a number (ex. 23) not a word!")
                     dont_show = True
                 if x == 7:
                     make_linebreak()
@@ -57,6 +59,8 @@ class Puzzle():
                     self.room_states["Room One"] = True
                     make_linebreak()
                     print("Loading...")
+                    self.end_time = time.perf_counter()
+                    print(f"lock one took {self.end_time - self.start_time:.3f} seconds") #This will be used at the end of the escape room so that way they can know final time taken and its ascociated score which will be 0 - 500 
                     time.sleep(10.0)
                     self.present_lock_two()
                     break
