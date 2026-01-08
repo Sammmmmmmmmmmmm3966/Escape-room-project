@@ -1,9 +1,9 @@
 import time #I got time so i can have "load time" so that way players have a buffer to read everything
+import matplotlib.pyplot as plt #Now i can make silly graphs :)
+import numpy as np
 riddle_one = "To open the first lock solve this riddle (The answer is a whole number):\nI am the number of virtues that guide the soul,\nAnd the sins that take their toll.\nAnd the colors in a drop of morning dew.\nI am the sisters in the winter sky,\nAnd the pillars on which wisdom’s house does lie.\nI am the day the Creator finally chose to rest,\nThe perfect score, the ultimate test."
-
 riddle_two = ""
 riddle_three = ""
-
 class Puzzle():
     def __init__(self):
         self.user_name = "Blank"
@@ -65,6 +65,7 @@ class Puzzle():
                     self.present_lock_two()
                     break
                 elif x != 7 and dont_show == False:
+                    make_linebreak()
                     print("YOU ARE WRONG TRY AGAIN!!!")
             elif x == 3:
                 print("Reseting...")
@@ -82,8 +83,5 @@ def make_blankspace(): #makes some blank room on the terminal so it looks nice
         print()
 def make_linebreak(): #It makes a very fun linebreak
     print("---------------------------------------------")
-
-
-
 escape_room = Puzzle()
 escape_room.welcome_player()
